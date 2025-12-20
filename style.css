@@ -544,6 +544,14 @@ ul.specs li::before {
     flex-shrink: 0;
     box-shadow: 0 4px 15px rgba(255, 42, 109, 0.3);
     transition: all 0.3s ease;
+    color: #fff;
+}
+
+.feature-icon i {
+    /* Bootstrap icon styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-card:hover .feature-icon {
