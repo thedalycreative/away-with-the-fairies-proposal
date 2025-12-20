@@ -1,0 +1,620 @@
+/* ============================================
+   CSS Custom Properties (Variables)
+   ============================================ */
+:root {
+    /* Color palette for the entire site */
+    --bg-color: #0f0f13;              /* Main background - dark blue-black */
+    --card-bg: #1a1a24;               /* Card background - slightly lighter */
+    --text-main: #e0e0e0;             /* Primary text color - light gray */
+    --text-muted: #a0a0b0;            /* Secondary text color - muted gray */
+    --accent-pink: #ff2a6d;           /* Primary accent - vibrant pink */
+    --accent-blue: #05d9e8;           /* Secondary accent - cyan blue */
+    --gradient: linear-gradient(135deg, #ff2a6d, #7700ff);       /* Pink to purple gradient */
+    --gradient-blue: linear-gradient(135deg, #05d9e8, #7700ff);  /* Blue to purple gradient */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Font stack */
+}
+
+/* ============================================
+   Global Reset & Base Styles
+   ============================================ */
+* {
+    /* Reset all elements to use border-box sizing for easier layout */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Main body styling with dark background and smooth fonts */
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    font-size: 18px;  /* Increased base font size */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;  /* Smooths text rendering on macOS */
+    overflow-x: hidden;  /* Prevent horizontal scroll */
+}
+
+/* ============================================
+   Layout Container
+   ============================================ */
+.container {
+    /* Centers content and provides responsive padding */
+    max-width: 1200px;  /* Increased from 900px for larger content area */
+    margin: 0 auto;
+    padding: 60px 40px;  /* Increased padding */
+}
+
+/* ============================================
+   Header Section
+   ============================================ */
+header {
+    /* Main header with centered text and bottom border */
+    text-align: center;
+    padding: 80px 0;
+    border-bottom: 2px solid rgba(5, 217, 232, 0.3);
+    margin-bottom: 80px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(26, 26, 36, 0.8), rgba(15, 15, 19, 0.9));
+}
+
+header::before {
+    /* Animated gradient background */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 42, 109, 0.1), transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+h1 {
+    /* Large title with gradient text effect */
+    font-size: 5rem;  /* Increased from 3.5rem */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+    background: var(--gradient);
+    -webkit-background-clip: text;        /* Clips gradient to text */
+    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subtitle {
+    /* Subtitle styling above main title */
+    font-size: 1.5rem;  /* Increased from 1.2rem */
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.tagline {
+    /* Tagline below title */
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* ============================================
+   Section Styles
+   ============================================ */
+section {
+    /* Spacing between major content sections */
+    margin-bottom: 80px;
+    padding: 60px 0;
+    position: relative;
+}
+
+section:nth-child(even) {
+    /* Alternating subtle background for visual separation */
+    background: linear-gradient(135deg, rgba(26, 26, 36, 0.3), rgba(15, 15, 19, 0.5));
+    padding: 60px 40px;
+    margin-left: -40px;
+    margin-right: -40px;
+    border-radius: 20px;
+}
+
+.content-image {
+    /* Contextual images within sections */
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    margin: 30px auto;
+    display: block;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(5, 217, 232, 0.2);
+    transition: all 0.3s ease;
+}
+
+.content-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(5, 217, 232, 0.3);
+    border-color: rgba(5, 217, 232, 0.5);
+}
+
+.content-image.small {
+    /* Smaller images for inline content */
+    max-width: 300px;
+    float: right;
+    margin: 10px 0 20px 30px;
+}
+
+.hosts-images {
+    /* Container for host photos side by side */
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.host-photo {
+    /* Individual host photo */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-pink);
+    box-shadow: 0 8px 25px rgba(255, 42, 109, 0.4);
+    transition: all 0.3s ease;
+}
+
+.host-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 42, 109, 0.6);
+}
+
+h2 {
+    /* Section headings with left border accent */
+    font-size: 2.8rem;  /* Increased from 2rem */
+    margin-bottom: 30px;
+    border-left: 6px solid var(--accent-pink);  /* Thicker border */
+    padding-left: 20px;
+    color: #fff;
+    position: relative;
+    animation: slideInLeft 0.6s ease-out;
+}
+
+h2::after {
+    /* Decorative underline */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 80px;
+    height: 3px;
+    background: var(--gradient);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+p {
+    /* Paragraph styling with bright readable text */
+    margin-bottom: 25px;
+    font-size: 1.3rem;  /* Increased from 1.1rem */
+    color: var(--text-main);  /* Changed from muted to bright main text color */
+    line-height: 1.8;
+}
+
+p a {
+    /* Links within paragraphs */
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-blue);
+    transition: opacity 0.2s ease;
+}
+
+p a:hover {
+    /* Link hover effect */
+    opacity: 0.7;
+}
+
+.host-link {
+    /* Special styling for host names */
+    color: var(--accent-pink);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-pink);
+    transition: all 0.3s ease;
+}
+
+.host-link:hover {
+    /* Host link hover effect */
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+}
+
+.highlight {
+    /* Class for emphasized text within paragraphs */
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ============================================
+   Grid Layout for Cards
+   ============================================ */
+.grid {
+    /* Responsive grid that adapts to screen size */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Changed to 2 columns for 2x2 layout */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.grid > * {
+    /* Staggered animation for grid items */
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.grid > *:nth-child(1) { animation-delay: 0.1s; }
+.grid > *:nth-child(2) { animation-delay: 0.2s; }
+.grid > *:nth-child(3) { animation-delay: 0.3s; }
+.grid > *:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   Card Components
+   ============================================ */
+.card {
+    /* Individual card styling with hover effects */
+    background: var(--card-bg);
+    padding: 40px;  /* Increased padding for more content space */
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    min-height: 450px;  /* Minimum height to ensure content fills the box */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.card::before {
+    /* Dark overlay for readability when background images are present */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 26, 36, 0.92), rgba(26, 26, 36, 0.88));
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.card:hover::before {
+    /* Lighten overlay on hover to show more of background */
+    background: linear-gradient(135deg, rgba(26, 26, 36, 0.85), rgba(26, 26, 36, 0.80));
+}
+
+.card > * {
+    /* Ensure all card content appears above the overlay */
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    /* Hover effect: lifts card and changes border to pink */
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-pink);
+    box-shadow: 0 15px 40px rgba(255, 42, 109, 0.3);
+}
+
+.card.panel-card:hover {
+    /* Special hover for panel card: changes border to blue */
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 40px rgba(5, 217, 232, 0.3);
+}
+
+.era-badge {
+    /* Badge displaying the decade/era for each episode */
+    display: inline-block;
+    background: var(--gradient);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1.1rem;  /* Increased from 0.85rem */
+    font-weight: bold;
+    margin-bottom: 20px;
+    align-self: flex-start;
+    box-shadow: 0 6px 20px rgba(255, 42, 109, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.era-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 42, 109, 0.6);
+}
+
+.episode-number {
+    /* Large episode number with icon */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 42, 109, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 42, 109, 0.5);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.card:hover .episode-number {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 42, 109, 0.7);
+}
+
+.card h3 {
+    /* Card title styling */
+    font-size: 2rem;  /* Increased from 1.5rem */
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.guest-name {
+    /* Guest name styling within cards */
+    color: var(--accent-blue);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   Panel Card Special Styling
+   ============================================ */
+.panel-targets {
+    /* Container for the panel guests list */
+    margin-bottom: 20px;
+}
+
+.panel-label {
+    /* Label above the panel guests list */
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.star-list {
+    /* Unstyled list for panel guests with flex layout */
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.star-list li {
+    /* Individual guest tag styling */
+    background: rgba(5, 217, 232, 0.15);
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 8px 14px;  /* Slightly larger padding */
+    border-radius: 5px;
+    font-size: 0.85rem;  /* Kept smaller than paragraph text */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.star-list li:hover {
+    transform: translateY(-2px);
+    background: rgba(5, 217, 232, 0.25);
+    box-shadow: 0 4px 12px rgba(5, 217, 232, 0.3);
+}
+
+.star-list li a {
+    /* Link styling for guest tags - inherits parent color */
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.star-list li a:hover {
+    /* Hover effect for guest links */
+    opacity: 0.8;
+}
+
+.moonshot {
+    /* Special styling for "moonshot" guest (high-profile target) */
+    border-color: #ffaa00 !important;
+    color: #ffaa00 !important;
+    background: rgba(255, 170, 0, 0.15) !important;
+}
+
+/* ============================================
+   Technical Specifications List
+   ============================================ */
+ul.specs {
+    /* Remove default list styling */
+    list-style: none;
+}
+
+ul.specs li {
+    /* Specs list items with custom bullet points */
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+ul.specs li::before {
+    /* Custom pink bullet point for specs list */
+    content: "•";
+    color: var(--accent-pink);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* ============================================
+   Why Choose Us / Features Section
+   ============================================ */
+.feature-grid {
+    /* Two-column grid for feature cards */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    /* Individual feature card styling */
+    background: var(--card-bg);
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card:hover {
+    /* Hover effect for feature cards */
+    transform: translateY(-3px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(5, 217, 232, 0.15);
+}
+
+.feature-icon {
+    /* Icon container at top of feature card */
+    width: 70px;
+    height: 70px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(255, 42, 109, 0.3);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotateY(360deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 42, 109, 0.5);
+}
+
+.feature-card h3 {
+    /* Feature card title */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.feature-card p {
+    /* Feature card description */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    /* Stack features on smaller screens */
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Footer Section
+   ============================================ */
+footer {
+    /* Footer with top border and centered text */
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 50px;
+    border-top: 2px solid rgba(5, 217, 232, 0.3);
+    color: #666;
+    font-size: 0.9rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.tdc-tag {
+    /* Link styling in footer */
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ============================================
+   Mobile Responsive Adjustments
+   ============================================ */
+@media (max-width: 600px) {
+    /* Adjustments for smaller screens */
+    h1 { 
+        font-size: 3rem;  /* Smaller title on mobile */
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    .container { 
+        padding: 30px 20px;  /* Reduced padding on mobile */
+    }
+    .grid {
+        grid-template-columns: 1fr;  /* Single column on mobile */
+    }
+}
