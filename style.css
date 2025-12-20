@@ -581,6 +581,91 @@ ul.specs li::before {
 }
 
 /* ============================================
+   Summary Section Styling
+   ============================================ */
+.summary-section {
+    /* Special styling for final summary section */
+    background: linear-gradient(135deg, rgba(26, 26, 36, 0.6), rgba(15, 15, 19, 0.8));
+    border: 2px solid rgba(255, 42, 109, 0.3);
+    padding: 80px 40px;
+    margin-left: -40px;
+    margin-right: -40px;
+    border-radius: 20px;
+}
+
+.summary-content {
+    /* Grid layout for summary highlights */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.summary-highlight {
+    /* Individual summary card */
+    background: rgba(26, 26, 36, 0.7);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(5, 217, 232, 0.3);
+    transition: all 0.3s ease;
+}
+
+.summary-highlight:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(5, 217, 232, 0.3);
+}
+
+.summary-highlight i {
+    /* Icon in summary cards */
+    font-size: 3rem;
+    color: var(--accent-pink);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.summary-highlight h3 {
+    /* Summary card title */
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 15px;
+}
+
+.summary-highlight p {
+    /* Summary card text */
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.cta-box {
+    /* Call-to-action box at bottom of summary */
+    background: var(--gradient);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 10px 40px rgba(255, 42, 109, 0.4);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.cta-text {
+    /* Main CTA text */
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-subtext {
+    /* Secondary CTA text */
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+/* ============================================
    Footer Section
    ============================================ */
 footer {
