@@ -163,6 +163,17 @@ section:nth-child(even) {
     border-color: rgba(5, 217, 232, 0.5);
 }
 
+.image-caption {
+    /* Caption text below images */
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    margin: 15px auto 30px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
 .content-image.small {
     /* Smaller images for inline content */
     max-width: 300px;
