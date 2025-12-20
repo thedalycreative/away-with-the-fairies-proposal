@@ -694,11 +694,32 @@ footer p {
     margin-bottom: 10px;
 }
 
-.tdc-tag {
-    /* Link styling in footer */
-    color: var(--accent-blue);
-    text-decoration: none;
-    font-weight: bold;
+.production-box {
+    /* White box for production credits */
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    margin: 30px auto 0;
+    max-width: 500px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tdc-logo-link {
+    /* Link wrapper for logo */
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.tdc-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.tdc-logo {
+    /* TDC logo image styling */
+    max-width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* ============================================
